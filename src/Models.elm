@@ -1,13 +1,22 @@
 module Models exposing (..)
 
-import Players.Models exposing (Player)
+import Players.Models exposing (Player, PlayerId)
+
+
+type Route
+    = PlayersRoute
+    | PlayerRoute PlayerId
+    | NotFoundRoute
 
 
 type alias Model =
-    { players : List Player }
+    { players : List Player
+    , route : Route
+    }
 
 
-initialModel : Model
-initialModel =
+initialModel : Route -> Model
+initialModel route =
     { players = []
+    , route = route
     }
